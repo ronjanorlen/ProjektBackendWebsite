@@ -1,0 +1,9 @@
+@use "base";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: base.$font-stack;
+}
