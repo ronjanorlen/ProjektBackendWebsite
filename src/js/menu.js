@@ -3,12 +3,11 @@
 import { url } from "./main"; // Importera API
 import { menuContainer } from "./main"; // Importera meny-container
 
+/* Exporterad async-funktion för att hämta maträtter från databasen */
 export async function getMenu() {
     try {
         const response = await fetch(`${url}meals`);
         let menu = await response.json();
-
-        console.table(menu);
 
         displayMenu(menu);
 
@@ -17,6 +16,7 @@ export async function getMenu() {
     }
 }
 
+/* Funktion för att visa meny */
 function displayMenu(menu) {
    
     if (menuContainer) {
@@ -33,5 +33,47 @@ function displayMenu(menu) {
             `;
             menuContainer.appendChild(mealItem);
         });
+    }
+}
+
+/* Exportad async-funktion för att lägga till maträtt */
+export async function addNewMeal() {
+    const name = document.getElementById("new-name").value;
+    const description = document.getElementById("meal-desc").value;
+    const category = document.getElementById("meal-category").value;
+    const price = document.getElementById("new-price").value;
+    const addMealForm = document.getElementById("new-meal");
+    
+    // Objekt med formulärets inputvärdet
+    const newMealData = {
+        name,
+        description,
+        category,
+        price
+    };
+
+    try {
+        const response = await fetch(`${url}meals`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("JWT")}`
+            },
+            body: JSON.stringify(newMealData)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            console.error("Något gick fel vid tillägg av ny maträtt: ", result);
+            return;
+        } else {
+            addMealForm.reset(); // Återställ formulär
+
+            getMenu(); // Hämta menyn
+
+        }
+    } catch (error) {
+        console.error("Något gick fel vid tillägg av ny maträtt: ", error);
     }
 }

@@ -3,6 +3,7 @@
 /* Moduler */
 import { getMenu } from "./menu"; // Importera hämta meny
 import { loginUser } from "./login"; // Importera logga in-funktion
+import { addNewMeal } from "./menu"; // Importera lägga till maträtt-funktion
 
 
 /* Variabler */
@@ -12,6 +13,8 @@ export let errorMsg = document.getElementById("error-message"); // Felmeddelande
 
 const loginContainer = document.getElementById("login"); // Logga in-formulär
 const loginBtn = document.getElementById("submit-login"); // Logga in-knapp
+const addMealForm = document.getElementById("new-meal"); // Lägg till maträtt-formulär
+const addMealBtn = document.getElementById("newMeal"); // Lägg till maträtt-knapp
 
 
 /* När sidan laddas */
@@ -41,6 +44,22 @@ function init() {
             
             };
         }
+
+        // Kontroll om lägga till maträtt-formulär finns
+        if (addMealForm) {
+            addMealBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                addNewMeal();
+            });
+
+            const formInput = addMealForm.querySelectorAll("input");
+            formInput.forEach(input => {
+                input.addEventListener("input", () => {
+                  //  errorMsg.style.display = "none";
+                });
+            });
+        }
+        
 }
 
 
