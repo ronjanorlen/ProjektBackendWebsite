@@ -4,7 +4,7 @@
 // Importa funktioner från menu.js
 import { getMenu, addNewMeal, updateMeal, deleteMeal } from "./menu"; 
 
-// Importera logga in-funktion
+// Importera logga in, skapa användare
 import { loginUser } from "./login"; 
 import { createUser } from "./createuser";
 
