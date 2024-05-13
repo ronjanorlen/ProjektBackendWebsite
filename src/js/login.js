@@ -29,7 +29,7 @@ export async function loginUser() {
         // Kontroll om svaret är lyckat eller inte
         if (!response.ok) {
             console.error("Inloggningsfel: ", data.error); 
-            errorMsg.style.display = "flex"; 
+            errorMsg.style.display = "block"; 
             errorMsg.innerHTML = data.error;
             return;
 
@@ -40,7 +40,7 @@ export async function loginUser() {
             window.location.href = "/admin.html"; // Omdirigera användaren till admin-sida
         }
 
-        // Fångar upp ev fel
+        // Vid eventuella fel
     } catch (error) {
         console.error("Något gick fel vid inloggning: ", error);
     }

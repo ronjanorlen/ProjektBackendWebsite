@@ -6,6 +6,7 @@ import { getMenu, addNewMeal, updateMeal, deleteMeal } from "./menu";
 
 // Importera logga in-funktion
 import { loginUser } from "./login"; 
+import { createUser } from "./createuser";
 
 
 /* Variabler */
@@ -16,13 +17,17 @@ export let errorMsg = document.getElementById("error-message"); // Felmeddelande
 const loginContainer = document.getElementById("login"); // Logga in-formulär
 const loginBtn = document.getElementById("submit-login"); // Logga in-knapp
 const logoutBtn = document.getElementById("log-out"); // Logga ut-knapp
+
 const addMealForm = document.getElementById("new-meal"); // Lägg till maträtt-formulär
 const addMealBtn = document.getElementById("newMeal"); // Lägg till maträtt-knapp 
 
 const updateMealForm = document.getElementById("update-meal"); // Redigera maträtt-formulär
 const updateMealBtn = document.getElementById("editMeal"); // Uppdatera maträtt-knapp
-
 const deleteBtn = document.getElementById("deleteBtn"); // Ta bort maträtt-knapp
+
+const addUserForm = document.getElementById("userForm"); // Skapa ny användare-formulär
+const addUserBtn = document.getElementById("submit-user"); // Lägg till ny användare-knapp
+
 
 /* När sidan laddas */
 window.onload = init();
@@ -81,6 +86,15 @@ function init() {
                 deleteMeal(id); // Skicka med maträttens ID till deleteMeal-funktionen
             });
         }
+
+        // Kontroll om formulär för att lägga till användare finns
+        if (addUserForm) {
+            addUserBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                createUser();
+            });
+        }
+
 
         // Kontroll om logga ut-knapp finns
         if (logoutBtn) {
