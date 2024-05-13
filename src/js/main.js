@@ -1,9 +1,11 @@
 "use strict";
 
 /* Moduler */
-import { getMenu } from "./menu"; // Importera hämta meny
-import { loginUser } from "./login"; // Importera logga in-funktion
-import { addNewMeal } from "./menu"; // Importera lägga till maträtt-funktion
+// Importa funktioner från menu.js
+import { getMenu, addNewMeal, updateMeal, deleteMeal } from "./menu"; 
+
+// Importera logga in-funktion
+import { loginUser } from "./login"; 
 
 
 /* Variabler */
@@ -13,9 +15,14 @@ export let errorMsg = document.getElementById("error-message"); // Felmeddelande
 
 const loginContainer = document.getElementById("login"); // Logga in-formulär
 const loginBtn = document.getElementById("submit-login"); // Logga in-knapp
+const logoutBtn = document.getElementById("log-out"); // Logga ut-knapp
 const addMealForm = document.getElementById("new-meal"); // Lägg till maträtt-formulär
-const addMealBtn = document.getElementById("newMeal"); // Lägg till maträtt-knapp
+const addMealBtn = document.getElementById("newMeal"); // Lägg till maträtt-knapp 
 
+const updateMealForm = document.getElementById("update-meal"); // Redigera maträtt-formulär
+const updateMealBtn = document.getElementById("editMeal"); // Uppdatera maträtt-knapp
+
+const deleteBtn = document.getElementById("deleteBtn"); // Ta bort maträtt-knapp
 
 /* När sidan laddas */
 window.onload = init();
@@ -57,6 +64,30 @@ function init() {
                 input.addEventListener("input", () => {
                   //  errorMsg.style.display = "none";
                 });
+            });
+        }
+        // Kontroll om redigera maträtt-formulär finns
+        if (updateMealForm) {
+            updateMealBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                updateMeal();
+            });
+        }
+
+        // Kontroll om ta bort maträtt-knapp finns
+        if (deleteBtn) {
+            deleteBtn.addEventListener("click", () => {
+                const id = deleteBtn.dataset._id; // Hämta maträttens ID från knappen
+                deleteMeal(id); // Skicka med maträttens ID till deleteMeal-funktionen
+            });
+        }
+
+        // Kontroll om logga ut-knapp finns
+        if (logoutBtn) {
+            // Händelselyssnare för att logga ut
+            logoutBtn.addEventListener("click", () => {
+                localStorage.clear() // Töm localStorage
+                window.location.href = "/index.html"; // Skicka användaren till startsidan igen
             });
         }
         
