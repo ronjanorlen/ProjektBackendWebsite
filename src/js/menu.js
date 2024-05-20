@@ -30,15 +30,29 @@ function displayMenu(menu) {
         // Loopa igenom
         categories.forEach(category => {
             const categoryHeader = document.createElement("h2");
-            categoryHeader.textContent = category;
+            // Ersätter kategorinamnen med egna namn
+            switch (category) {
+                case "mainmenu":
+                    categoryHeader.textContent = "Huvudmeny";
+                    break;
+                case "dessert":
+                    categoryHeader.textContent = "Dessert";
+                    break;
+                case "kidsmenu":
+                    categoryHeader.textContent = "Barnmeny";
+                    break;
+                default:
+                    categoryHeader.textContent = category;
+            }
             menuContainer.appendChild(categoryHeader);
+            
             // Skapa ul-lista
             const categoryList = document.createElement("ul");
             categoryList.classList.add("meal-list"); // Sätt klass på ul-lista
 
             menu.filter(meal => meal.category === category).forEach(meal => {
                 const mealItem = document.createElement("li"); // Skapa li-element
-                mealItem.textContent = meal.name;
+                mealItem.textContent = `${meal.name} - ${meal.price} kr`;
                 mealItem.classList.add("meal-item"); // Sätt klass på li-element
 
 
