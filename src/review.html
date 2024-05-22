@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recensioner</title>
+    <!-- Länk till scss-fil -->
+    <link rel="stylesheet" href="scss/main.scss">
+    <!-- Länk till fontawesome -->
+    <script src="https://kit.fontawesome.com/41ba6d6515.js" crossorigin="anonymous"></script>
+    <!-- Länk till googlefonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <!-- Länk till js-fil -->
+    <script src="js/review.js" type="module"></script>
+</head>
+<body>
+    <header>
+        <div class="topnav">
+            <a class="active" href="index.html">Hem</a>
+                <a href="about.html">Om oss</a>
+                <a href="review.html" class="split">Recensioner</a>
+                <a href="contact.html" class="split">Kontakt</a>
+        </div>
+    </header>
+    <main>
+        <div id="container"></div>
+        <div id="reviews">
+            <h2>Tyck till om oss!</h2>
+            <p>Här kan det vara lite text</p>  
+            <!-- Formulär för att uppdatera befintlig maträtt -->
+            <form id="addReview" method="POST">
+                <h2>Lägg till kommentar</h2>
+                <label for="rev-name">Namn:</label>
+                <input type="text" id="rev-name" required>
+                
+                <label for="rev-com">Beskrivning:</label>
+                <textarea id="rev-com" placeholder="Skriv en kommentar"></textarea>
+                
+                <label for="rev-rate">Rating:</label>
+                <div id="rating-input">
+                    <input type="radio" id="rev-rate-1" name="rev-rate" value="1" required>
+                    <label for="rev-rate-1">1</label>
+                    
+                    <input type="radio" id="rev-rate-2" name="rev-rate" value="2">
+                    <label for="rev-rate-2">2</label>
+                    
+                    <input type="radio" id="rev-rate-3" name="rev-rate" value="3">
+                    <label for="rev-rate-3">3</label>
+                    
+                    <input type="radio" id="rev-rate-4" name="rev-rate" value="4">
+                    <label for="rev-rate-4">4</label>
+                    
+                    <input type="radio" id="rev-rate-5" name="rev-rate" value="5">
+                    <label for="rev-rate-5">5</label>
+                </div>
+
+                <button type="submit" id="revSave">Lämna kommentar</button>
+            </form>
+        </div>
+        <div id="review-container"></div>
+    </main>
+    <footer>
+        <div id="footer-container">
+            <div class="footer-row">
+                <ul>
+                    <li><i class="fa-brands fa-facebook"></i> Facebook</li>
+      <li><i class="fa-brands fa-instagram"></i> Instagram</li>
+      <li><i class="fa-brands fa-twitter"></i> Twitter</li>
+      <li><i class="fa-brands fa-youtube"></i> Youtube</li>
+                </ul>
+            </div>
+            <div class="footer-row">
+                <ul>
+                <li><a href="contact.html"><i class="fa-solid fa-message"></i> Kontakta oss</a></li>
+                <li><a href="review.html"><i class="fa-solid fa-heart"></i> Recensioner</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> Om oss</a></li>
+                <li><a href="login.html"><i class="fa-regular fa-user"></i> Artutt</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

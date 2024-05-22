@@ -4,6 +4,7 @@
 // Importa funktioner från menu.js
 import { getMenu, addNewMeal, updateMeal, deleteMeal } from "./menu"; 
 
+
 // Importera logga in, skapa användare
 import { loginUser } from "./login"; 
 import { createUser } from "./createuser";
@@ -28,6 +29,8 @@ const deleteBtn = document.getElementById("deleteBtn"); // Ta bort maträtt-knap
 const addUserForm = document.getElementById("userForm"); // Skapa ny användare-formulär
 const addUserBtn = document.getElementById("submit-user"); // Lägg till ny användare-knapp
 
+// export const reviewContainer = document.getElementById("review-container"); // Recension-container
+
 
 /* När sidan laddas */
 window.onload = init();
@@ -37,6 +40,11 @@ function init() {
     if (menuContainer) {
         getMenu();
     }
+
+    // Kontrollera om recension-container finns
+  //  if (reviewContainer) {
+    //    getReviews();
+   // }
 
     // Kontrollera om logga in-container finns
     if (loginContainer) {

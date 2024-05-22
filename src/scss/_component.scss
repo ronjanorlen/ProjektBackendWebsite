@@ -12,6 +12,7 @@
     margin: 10px 10px;
 }
 
+
 //Knappar
 @mixin button {
     color: #fff;
@@ -29,6 +30,9 @@
 
 // Formulär
 // Logga in-formulär
+#login-container {
+    border: 2px solid #000;
+}
 #login-container form {
     display: flex;
     flex-direction: column;
@@ -36,7 +40,7 @@
 
 #login-container label {
     font-size: 16px;
-    color: #181818;
+    color: #e9e9e9;
     margin-bottom: 5px;
 }
 
@@ -45,7 +49,7 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 2px solid #000;
     border-radius: 5px;
 }
 
@@ -70,4 +74,41 @@
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+// Skapa konto-formulär
+#userForm form {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #000; 
+    padding: 20px; 
+}
+
+#userForm label {
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+#userForm input[type="text"],
+#userForm input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #000; 
+    border-radius: 5px;
+}
+
+#userForm button {
+    background-color: #526245;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#userForm button:hover {
+    background-color: #22271e;
 }

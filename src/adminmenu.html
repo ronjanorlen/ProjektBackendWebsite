@@ -17,14 +17,12 @@
 </head>
 <body>
     <header>
-        <nav id="main-menu">
-            <ul>
-                <li><a href="index.html">Hem</a></li>
-                <li><a href="contact.html">Kontakta oss</a></li>
-                <li><a href="review.html">Recensioner</a></li>
-                <li><a href="about.html">Om oss</a></li>
-            </ul>
-        </nav>
+        <div class="topnav">
+            <a class="active" href="index.html">Hem</a>
+                <a href="about.html">Om oss</a>
+                <a href="review.html" class="split">Recensioner</a>
+                <a href="contact.html" class="split">Kontakt</a>
+        </div>
     </header>
     <main>
         <div id="container"></div>
@@ -33,7 +31,7 @@
         
                 <ul>
                     <li><a href="admin.html">Admin start</a></li>
-                    <li><a class="active" href="adminmenu.html">Meny</a></li>
+                    <li><a href="adminmenu.html">Meny</a></li>
                     <li><a href="createuser.html">Skapa användare</a></li>
                 </ul>
                 <button type="submit" id="log-out">Logga ut</button>

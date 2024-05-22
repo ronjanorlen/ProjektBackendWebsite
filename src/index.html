@@ -17,14 +17,12 @@
 </head>
 <body>
     <header>
-        <nav id="main-menu">
-            <ul>
-                <li><a class="active" href="index.html">Hem</a></li>
-                <li><a href="contact.html">Kontakta oss</a></li>
-                <li><a href="review.html">Recensioner</a></li>
-                <li><a href="about.html">Om oss</a></li>
-            </ul>
-        </nav>
+        <div class="topnav">
+            <a class="active" href="index.html">Hem</a>
+                <a href="about.html">Om oss</a>
+                <a href="review.html" class="split">Recensioner</a>
+                <a href="contact.html" class="split">Kontakt</a>
+        </div>
     </header>
     <main>
         <div id="container">
@@ -33,7 +31,6 @@
             <p>En fjällnära matupplevelse</p>
         </div>
         <!-- Meny -->
-        <h2 class="second-heading">Vår meny</h2>
         <div id="menu-container"></div>
         <!-- Öppettider -->
        <div id="open-hours">
@@ -48,12 +45,28 @@
             <li><strong>Söndag:</strong>11-21</li>
         </ul>
        </div>
+       <div class="home-images">
+        <div class="gallery">
+       <img class="homeImage" src="images/home1.jpg" alt="Ett dukat bord på en restaurang">
+    </div>
+    <div class="gallery">
+       <img class="homeImage" src="images/home2.jpg" alt="Ett dukat bord på en restaurang">
+    </div>
+    </div>
+    </div>
     </main>
     <footer>
         <div id="footer-container">
             <div class="footer-row">
                 <ul>
-                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Hem</a></li>
+                    <li><i class="fa-brands fa-facebook"></i> Facebook</li>
+      <li><i class="fa-brands fa-instagram"></i> Instagram</li>
+      <li><i class="fa-brands fa-twitter"></i> Twitter</li>
+      <li><i class="fa-brands fa-youtube"></i> Youtube</li>
+                </ul>
+            </div>
+            <div class="footer-row">
+                <ul>
                 <li><a href="contact.html"><i class="fa-solid fa-message"></i> Kontakta oss</a></li>
                 <li><a href="review.html"><i class="fa-solid fa-heart"></i> Recensioner</a></li>
                 <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> Om oss</a></li>

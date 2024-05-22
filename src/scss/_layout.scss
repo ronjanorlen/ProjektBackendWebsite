@@ -31,31 +31,30 @@ header {
     left: 0;         
     z-index: 1000;   
 
-    nav {
-        height: 100px;
+    .topnav {
         background-color: base.$main-color;
-
-        ul {
-            padding: 0;
-            margin: 0;
-            list-style-type: none;
-            float: left;
-        }
-
-        li {
-            display: inline-block;
-            height: 90px;
-            margin: 0;
-        }
-
-        a {
-            font-size: 1.2em;
-            padding: 0 2em;
-            line-height: 100px;
-            color: #F5F4F0;
-            text-decoration: none;
-        }
+        overflow: hidden;
+        height: 100px;
     }
+
+    .topnav a {
+        float: left;
+        color: #fff;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 60px;
+    }
+    .topnav a:hover, .topnav .split:hover {
+        color: black;
+      }
+      
+      .topnav a.split {
+        float: right;
+        color: white;
+      }
+
 }
 /* Startsida */
 #container {
@@ -118,6 +117,8 @@ header {
 #menu-container h2 {
     text-align: center; 
     color: rgb(0, 95, 43);
+    margin-bottom: 25px;
+    font-size: 45px;
 }
 
 #menu-container ul {
@@ -127,8 +128,13 @@ header {
 
 #menu-container ul li {
     display: block; 
-    margin: 0 10px; 
+    margin: 30px 10px; 
 }
+#menu-container p {
+    width: 60%;
+    margin: 15px auto; 
+}
+
 
 /* öppet-tider */
 #open-hours {
@@ -155,6 +161,25 @@ header {
 #open-hours li {
     margin: 5px 0;
 }
+
+/* Bilder */
+.home-images {
+    width: 80%;
+    display: flex;
+}
+
+.gallery {
+    flex-basis: calc(50% - 20px);
+    padding: 10px 50px;
+    width: 50%;
+    margin-bottom: 20px;
+
+    .homeImage {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
 /* Om-sida */
 #about {
     width: 60%;
@@ -177,7 +202,7 @@ header {
     margin-bottom: 20px;
 }
 
-/* Admin startsida */
+/* Admin-"meny" */
 .admin-start {
     width: 80%;
     margin: 10px auto;
@@ -192,7 +217,8 @@ header {
 
     button {
         flex: 0 1 auto;       
-        margin: 0 10px;       
+        margin: 0 10px;      
+        border: 1px solid #000; 
     }
 
     ul {
@@ -204,34 +230,40 @@ header {
         li {
             margin: 0 10px;  
             padding: 10px 25px;
-            background-color: #22271e;
-
-            a {
-                color: #ffffff;
-                text-decoration: none;
-            }
+            background-color: #455f81;
+            border-radius: 8px;
+            border: 1px solid #000;
+        }
+        a {
+            color: #ffffff;
+            text-decoration: none;
         }
     }
 }
+
+.admin-start li:hover {
+    background-color: #19203f;
+}
+
 // Knappar
 // Logga in-knapp
 #submit-login {
     @include component.button;
-    background-color: #203311;
+    background-color: #7a6426;
+    border: 1px solid #000;
  
 }
  #submit-login:hover {
-     background-color: #22271e;
+     background-color: #664c05;
  }
 
 // Logga ut-knapp
 #log-out {
     @include component.button;
-    background-color: #662727;
+    background-color: #683333;
 }
     #log-out:hover {
-        background-color: #641414;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        background-color: #811010;
 }
 
 // Lägg till maträtt-knapp
@@ -308,9 +340,9 @@ header {
 /* Footer */
 #footer-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-shrink: 0;
-    background-color: base.$main-color;
+    background-color:#1F1F1F;
     font-size: 16px;
     width: 100%;
     height: 240px;
