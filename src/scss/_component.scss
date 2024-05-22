@@ -53,6 +53,42 @@
     border-radius: 5px;
 }
 
+/*  lägg till maträtt */
+#new-meal {
+    padding: 20px;
+    border: 2px solid #313131;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+  
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #222;
+    }
+  
+    label {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 5%;
+      color: #222;
+    }
+  
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #222;
+    }
+  }
+
 // Redigera maträtt-formulör
 #update-meal {
     display: flex;
@@ -112,3 +148,6 @@
 #userForm button:hover {
     background-color: #22271e;
 }
+
+// Lägg till recension-formulär
+

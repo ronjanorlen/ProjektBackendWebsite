@@ -11,14 +11,36 @@ getReviews();
 /* Exporterad funktion för att hämta recensioner */
 async function getReviews() {
     try {
+        // Visa laddningsmeddelenade om seg laddning
+        showLoadingMessage();
+        
         const response = await fetch (`${url}reviews`);
         let reviews = await response.json();
+
+        // Dölj laddningsmeddelande när innehållet laddats och visas
+        hideLoadingMessage();
 
         // Ta med data till ny funktion
         displayReviews(reviews);
 
     } catch (e) {
         console.log(e);
+    }
+}
+
+/* Visa laddningsmeddelande */
+function showLoadingMessage() {
+    const loadingMessage = document.getElementById('loadingMessage');
+    if (loadingMessage) {
+        loadingMessage.style.display = 'block';
+    }
+}
+
+/* Dölj ladningsmeddelande */
+function hideLoadingMessage() {
+    const loadingMessage = document.getElementById('loadingMessage');
+    if (loadingMessage) {
+        loadingMessage.style.display = 'none';
     }
 }
 

@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+// Laddningsmeddelande om innehållet laddar långsamt //
+#loadingMessage {
+    display: none;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -162,7 +167,7 @@ header {
     margin: 5px 0;
 }
 
-/* Bilder */
+/* Bilder på startsida */
 .home-images {
     width: 80%;
     display: flex;
@@ -300,8 +305,19 @@ header {
     background-color: #615200;
 }
 
-/* Adminsida, meny */
-#new-meal {
+#revSave {
+    @include component.button;
+    background-color: #192b07;
+    margin-top: 25px;
+}
+
+#review-container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+  // Recensioner - lögg till
+ #addReview {
     padding: 20px;
     border: 2px solid #313131;
     border-radius: 10px;
@@ -324,8 +340,7 @@ header {
   
     input[type="text"],
     input[type="number"],
-    textarea,
-    select {
+    textarea {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -334,7 +349,18 @@ header {
       font-size: 16px;
       color: #222;
     }
-  }
+    input[type="radio"] {
+        margin-top: 16px;
+        width: 50px;
+    }
+ }
+
+ // Lögg till svart linje mellan recensionerna
+ #review-container>div {
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+ }
 
 
 /* Footer */
@@ -345,12 +371,12 @@ header {
     background-color:#1F1F1F;
     font-size: 16px;
     width: 100%;
-    height: 240px;
+    height: 200px;
 
     .footer-row li a, .footer-row li {
         list-style: none;
         padding: 0;
-        line-height: 2rem;
+        line-height: 2.4rem;
         text-align: left;
         color: base.$footer-links;
     }
