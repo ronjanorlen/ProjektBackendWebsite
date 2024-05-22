@@ -21,7 +21,6 @@ export async function getMenu() {
 
 /* Funktion för att visa meny */
 function displayMenu(menu) {
-
     if (menuContainer) {
         menuContainer.innerHTML = ""; // Rensa innehåll
 
@@ -45,16 +44,25 @@ function displayMenu(menu) {
                     categoryHeader.textContent = category;
             }
             menuContainer.appendChild(categoryHeader);
-            
+
             // Skapa ul-lista
             const categoryList = document.createElement("ul");
             categoryList.classList.add("meal-list"); // Sätt klass på ul-lista
 
             menu.filter(meal => meal.category === category).forEach(meal => {
                 const mealItem = document.createElement("li"); // Skapa li-element
-                mealItem.textContent = `${meal.name} - ${meal.price} kr`;
                 mealItem.classList.add("meal-item"); // Sätt klass på li-element
 
+                const mealName = document.createElement("span");
+                mealName.textContent = `${meal.name} - ${meal.price} kr`;
+                mealName.classList.add("meal-name");
+
+                const mealDesc = document.createElement("p");
+                mealDesc.textContent = meal.description;
+                mealDesc.classList.add("meal-desc");
+
+                mealItem.appendChild(mealName);
+                mealItem.appendChild(mealDesc);
 
                 // Skapa knappar för att redigera och ta bort maträtt
                 const adminMenu = menuContainer.classList.contains("admin-menu");

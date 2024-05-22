@@ -20,7 +20,6 @@
         <nav id="main-menu">
             <ul>
                 <li><a href="index.html">Hem</a></li>
-                <li><a class="active" href="menu.html">Meny</a></li>
                 <li><a href="contact.html">Kontakta oss</a></li>
                 <li><a href="review.html">Recensioner</a></li>
                 <li><a href="about.html">Om oss</a></li>
@@ -28,15 +27,18 @@
         </nav>
     </header>
     <main>
-        <div id="container">
-            <h2>Vad vill du göra?</h2>
-            <button type="submit" id="log-out">Logga ut</button>
-            <ul>
-                <li><a href="admin.html">Admin start</a></li>
-                <li><a class="active" href="adminmenu.html">Meny</a></li>
-                <li><a href="createuser.html">Skapa användare</a></li>
-            </ul>
-            <h2>Meny</h2>
+        <div id="container"></div>
+            <div class="admin-start">
+                <h2 class="second-heading">Redigera meny</h2>
+        
+                <ul>
+                    <li><a href="admin.html">Admin start</a></li>
+                    <li><a class="active" href="adminmenu.html">Meny</a></li>
+                    <li><a href="createuser.html">Skapa användare</a></li>
+                </ul>
+                <button type="submit" id="log-out">Logga ut</button>
+            </div>
+            <h2 class="second-heading">Meny</h2>
                   <!-- Formulär för att lägga till ny maträtt -->
                   <form id="new-meal" method="POST">
                     <h2>Lägg till maträtt</h2>
@@ -66,38 +68,16 @@
                 <h2>Redigera maträtt</h2>
                 <label for="edit-name">Namn:</label>
                 <input type="text" id="edit-name" required>
+                
                 <label for="edit-desc">Beskrivning:</label>
-                <input type="text" id="edit-desc" required>
+                <textarea id="edit-desc" placeholder="Ange en beskrivning"></textarea>
+                
                 <label for="edit-price">Pris:</label>
                 <input type="number" id="edit-price" required>
                 <button type="submit" id="editMeal">Spara ändringar</button>
             </form>
-        </div>
+        
     </main>
-    <footer>
-        <div id="footer-container">
-            <div id="footer-row">
-                <ul>
-                    <li><strong>Måndag:</strong>11-21</li>
-                    <li><strong>Tisdag:</strong>11-22</li>
-                    <li><strong>Onsdag:</strong>11-22</li>
-                    <li><strong>Torsdag:</strong>11-22</li>
-                    <li><strong>Fredag:</strong>11-23</li>
-                    <li><strong>Lördag:</strong>11-23</li>
-                    <li><strong>Söndag:</strong>11-21</li>
-                </ul>
-            </div>
-            <div id="footer-row">
-                <ul>
-                    <li><a href="index.html"><i class="fa-solid fa-house"></i> Hem</a></li>
-                <li><a href="menu.html"><i class="fa-solid fa-utensils"></i> Meny</a></li>
-                <li><a href="contact.html"><i class="fa-solid fa-message"></i> Kontakta oss</a></li>
-                <li><a href="review.html"><i class="fa-solid fa-heart"></i> Recensioner</a></li>
-                <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> Om oss</a></li>
-                <li><a href="login.html"><i class="fa-regular fa-user"></i> Artutt</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+    
 </body>
 </html>

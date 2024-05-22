@@ -1,6 +1,73 @@
 @use "base";
 
+// Rubriker
+.second-heading {
+    font-size: base.$second-headings;
+}
+
+//Felmeddelande
 #error-message {
-    display: none;
     color: red;
+    font-family: 'Oswald', sans-serif;
+    margin: 10px 10px;
+}
+
+//Knappar
+@mixin button {
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+#newMeal:hover {
+    background-color: #22271e;
+}
+
+// Formulär
+// Logga in-formulär
+#login-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+#login-container label {
+    font-size: 16px;
+    color: #181818;
+    margin-bottom: 5px;
+}
+
+#login-container input[type="text"],
+#login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+// Redigera maträtt-formulör
+#update-meal {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10%;
+}
+
+#update-meal label {
+    font-size: 16px;
+    color: #181818;
+    margin-bottom: 5px;
+}
+
+#update-meal input[type="text"],
+#update-meal textarea,
+#update-meal input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }

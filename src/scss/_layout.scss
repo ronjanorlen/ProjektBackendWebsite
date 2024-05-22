@@ -1,4 +1,5 @@
 @use "base";
+@use "component";
 
 * {
     box-sizing: border-box;
@@ -78,6 +79,10 @@ header {
         z-index: 1; 
     }
 
+    h2 {
+        text-align: center;
+    }
+
     p {
         position: absolute;
         top: 40%;
@@ -90,19 +95,29 @@ header {
     }
 }
 
-#short-intro {
-    width: 60%;
-    margin: 0 auto;
-}
 /* Meny för maträtter */
+
 #menu-container {
-    width: 60%;
+    width: 70%;
     margin: 10px auto;
     border: 1px solid #000;
+
+    .meal-name {
+        font-family:'Times New Roman', Times, serif;
+        font-size: 24px;
+        color: rgb(3, 95, 45);
+    }
+
+    p {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 18px;
+    }
 }
+
 
 #menu-container h2 {
     text-align: center; 
+    color: rgb(0, 95, 43);
 }
 
 #menu-container ul {
@@ -115,67 +130,185 @@ header {
     margin: 0 10px; 
 }
 
+/* öppet-tider */
+#open-hours {
+    background-color: base.$open-hours;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px auto;
+    padding: 10px 0;
+}
+
+#open-hours h2 {
+    margin: 10px 0; 
+}
+
+#open-hours ul {
+    list-style-type: none;
+    padding: 0; 
+    margin: 0;  
+    text-align: center; 
+}
+
+#open-hours li {
+    margin: 5px 0;
+}
+/* Om-sida */
+#about {
+    width: 60%;
+    margin: 0 auto;
+}
+
 /* Logga in-sida */
 #login-container {
-    width: 400px;
+    width: 450px;
     margin: 10px auto;
     text-align: center;
-    background-color: #2f3d21;
+    background-color: #2c3f19;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #login-container h2 {
-    color: #e2e2e2;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
-#login-container form {
-    display: flex;
-    flex-direction: column;
+/* Admin startsida */
+.admin-start {
+    width: 80%;
+    margin: 10px auto;
+    display: flex;            
+    align-items: center;      
+    justify-content: space-between; 
+
+    h2 {
+        flex: 1;              
+        text-align: center;   
+    }
+
+    button {
+        flex: 0 1 auto;       
+        margin: 0 10px;       
+    }
+
+    ul {
+        list-style-type: none;
+        display: flex;        
+        margin: 0;
+        padding: 0;
+
+        li {
+            margin: 0 10px;  
+            padding: 10px 25px;
+            background-color: #22271e;
+
+            a {
+                color: #ffffff;
+                text-decoration: none;
+            }
+        }
+    }
+}
+// Knappar
+// Logga in-knapp
+#submit-login {
+    @include component.button;
+    background-color: #203311;
+ 
+}
+ #submit-login:hover {
+     background-color: #22271e;
+ }
+
+// Logga ut-knapp
+#log-out {
+    @include component.button;
+    background-color: #662727;
+}
+    #log-out:hover {
+        background-color: #641414;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#login-container label {
-    font-size: 16px;
-    color: #e2e2e2;
-    margin-bottom: 5px;
+// Lägg till maträtt-knapp
+#newMeal {
+    @include component.button;
+    background-color: #2c3f19;
+    align-self: flex-end;
+  }
+
+  #newMeal:hover {
+    background-color: #192b07;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  // Spara redigerad maträtt-knapp
+  #editMeal {
+    @include component.button;
+    background-color: #22273a;
+  }
+
+  #editMeal:hover {
+    background-color: #19203f;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+// Redigera och ta bort-knappar i meny container
+  #menu-container button {
+    @include component.button;
+    background-color: #5f5627;
+    margin: 25px 25px;
 }
 
-#login-container input[type="text"],
-#login-container input[type="password"] {
+#menu-container button:hover {
+    background-color: #615200;
+}
+
+/* Adminsida, meny */
+#new-meal {
+    padding: 20px;
+    border: 2px solid #313131;
+    border-radius: 10px;
+    margin-bottom: 20px;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+    max-width: 600px;
+  
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #222;
+    }
+  
+    label {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 5%;
+      color: #222;
+    }
+  
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #222;
+    }
+  }
 
- button {
-    background-color: #526245;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #22271e;
-}
-
-
-#error-message {
-    color: red;
-    font-family: 'Oswald', sans-serif;
-    margin-top: 10px;
-}
 
 /* Footer */
 #footer-container {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-shrink: 0;
     background-color: base.$main-color;
     font-size: 16px;
@@ -186,7 +319,7 @@ button:hover {
         list-style: none;
         padding: 0;
         line-height: 2rem;
-        text-align: center;
+        text-align: left;
         color: base.$footer-links;
     }
 }
