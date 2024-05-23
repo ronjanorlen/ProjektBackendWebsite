@@ -1,6 +1,7 @@
 "use strict";
 
 import { url, errorMsg } from "./main"; // Importera API och felmeddelande från main
+import { showPopupMessage } from "./menu"; // Popup-meddelande funktion
 
 /* Exporterad async-funktion för att skapa ny användare */
 export async function createUser() {
@@ -33,7 +34,7 @@ export async function createUser() {
         // Kontroller om token saknas eller är ogiltig
         if (response.status === 401 || response.status === 403) {
             alert(`${result.message}. Du är inte inloggad eller din session har gått ut. Vänligen logga in igen.`); // Alert-ruta med felmeddelande
-            window.location.href = "login.html"; // Omdirigerar till inloggningssidan
+            window.location.href = "index.html"; // Omdirigerar till startsida
             return;
             // Kontroll om svaret blev lyckat eller inte
         } else if (!response.ok) {
@@ -47,8 +48,8 @@ export async function createUser() {
             username.value = "";
             password.value = "";
 
-            // TA BORT SEN - lägg till pop-up
-            console.log("Användare skapad");
+                // Visa popup-meddelande
+            showPopupMessage("Konto skapat", "popup-message-adm");
         }
 
         // Vid eventuella fel

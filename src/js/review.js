@@ -1,7 +1,8 @@
 "use strict";
 
 import { url } from "./main"; // importera API
-// import { reviewContainer } from "./main"; // hämta recension-container
+import { showLoadingMessage, hideLoadingMessage } from "./main"; // Laddningsmeddelanden
+import { showPopupMessage } from "./menu"; // Popup-meddelande funktion
 
 const addReviewForm = document.getElementById("addReview"); // Formulär för att lägga till recension
 const reviewContainer = document.getElementById("review-container"); // Recension-container
@@ -28,21 +29,7 @@ async function getReviews() {
     }
 }
 
-/* Visa laddningsmeddelande */
-function showLoadingMessage() {
-    const loadingMessage = document.getElementById('loadingMessage');
-    if (loadingMessage) {
-        loadingMessage.style.display = 'block';
-    }
-}
 
-/* Dölj ladningsmeddelande */
-function hideLoadingMessage() {
-    const loadingMessage = document.getElementById('loadingMessage');
-    if (loadingMessage) {
-        loadingMessage.style.display = 'none';
-    }
-}
 
 /* Funktion för att visa recensioner */
 function displayReviews(reviews) {
@@ -119,8 +106,12 @@ addReviewForm.addEventListener("submit", async (event) => {
         if (response.ok) {
             // Ladda om recensioner efter att ha lagt till en ny
             getReviews();
+
             // Återställ formuläret
             addReviewForm.reset();
+
+            // Visa popup-meddelande
+            showPopupMessage("Tack för din kommentar!", "popup-message-rev");
         } else {
             alert("Något gick fel, testa igen senare.");
         }

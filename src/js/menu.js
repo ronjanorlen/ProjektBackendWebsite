@@ -115,7 +115,7 @@ function showUpdateForm(meal) {
 
     // Visa formuläret för att redigera maträtten
     updateMealForm.style.display = "block";
-    
+
     // Scrolla ned till fomruläret
     updateMealForm.scrollIntoView({ behavior: 'smooth' });
 }
@@ -155,6 +155,9 @@ export async function updateMeal() {
 
             // Uppdatera menyn efter redigering
             getMenu();
+            // Visa popup-meddelande
+            showPopupMessage("Maträtten har ändrats!", "popup-message-edit");
+
         }
     } catch (error) {
         console.error("Något gick fel vid uppdatering av maträtt: ", error);
@@ -198,6 +201,9 @@ export async function addNewMeal() {
 
             getMenu(); // Hämta menyn
 
+            // Visa popup-meddelande
+            showPopupMessage("Maträtten har lagts till!", "popup-message");
+
         }
     } catch (error) {
         console.error("Något gick fel vid tillägg av ny maträtt: ", error);
@@ -206,6 +212,11 @@ export async function addNewMeal() {
 
 /* Exporterad async-funktion för att ta bort maträtt */
 export async function deleteMeal(id) { // Ta med id
+    // Be användaren bekräfta borttagnig
+    const userConfirmed = confirm("Vill du verkligen ta bort maträtten?");
+    if (!userConfirmed) {
+        return; // Avbryt
+    }
     try {
         const response = await fetch(`${url}meals/${id}`, {
             method: "DELETE",
@@ -225,8 +236,23 @@ export async function deleteMeal(id) { // Ta med id
 
             // Uppdatera menyn efter borttagning
             getMenu();
+
         }
     } catch (error) {
         console.error("Något gick fel vid borttagning av maträtt: ", error);
     }
+}
+
+/* Funktion för pop-up, exporteras */
+export function showPopupMessage(message, popupId) {
+    const popup = document.getElementById(popupId);
+    popup.textContent = message;
+    popup.classList.remove("hidden");
+    popup.classList.add("show");
+
+    // Dölj popup efter 3 sekunder
+    setTimeout(() => {
+        popup.classList.remove("show");
+        popup.classList.add("hidden");
+    }, 3000);
 }

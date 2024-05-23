@@ -18,7 +18,7 @@
 <body>
     <header>
         <div class="topnav">
-            <a class="active" href="index.html">Hem</a>
+            <a href="index.html">Hem</a>
                 <a href="about.html">Om oss</a>
                 <a href="review.html" class="split">Recensioner</a>
                 <a href="contact.html" class="split">Kontakt</a>
@@ -26,6 +26,7 @@
     </header>
     <main>
         <div id="container"></div>
+        <div id="protected-route">
             <div class="admin-start">
                 <h2 class="second-heading">Skapa användare</h2>
         
@@ -38,12 +39,16 @@
             </div>
         
             <div class="admin-text">
-                <p>Fyll i både lösenord och användarnamn för att skapa ett nytt konto. 
+                <p>Fyll i både lösenord och användarnamn för att skapa ett nytt konto. <br>
+                    Den som ska använda kontot ansvarar för att hålla koll på sina inloggningsuppgifter.
                 </p>
             </div>
+               <!-- Popup vid nytt konto -->
+               <div id="popup-message-adm" class="popup hidden"></div>
         <!-- Formulär för att skapa ny användare -->
-        <h2>Skapa ny användare</h2>
         <form id="userForm" method="POST">
+            <h2>Skapa ny användare</h2>
+
             <label for="new-username">Användarnamn</label>
             <input type="text" id="new-username" name="username" required placeholder="Ange användarnamn">
 
@@ -55,7 +60,7 @@
             <button type="submit" id="submit-user">Skapa konto</button>
 
         </form>
-        
+    </div>
     </main>
     
 </body>

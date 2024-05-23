@@ -5,9 +5,25 @@
     box-sizing: border-box;
 }
 
-// Laddningsmeddelande om innehållet laddar långsamt //
+// Laddningsmeddelande om innehållet laddar långsamt 
 #loadingMessage {
     display: none;
+}
+#loadingMessage i {
+    font-size: 30px;
+    margin-left: 100px;
+    margin-bottom: 10px;
+    animation-name: spinner;
+    animation-timing-function: ease;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+   }
+
+// Dölj skyddade routes om inte inloggad
+#protected-route {
+    display: none;
+    width: 80%;
+    margin: 0 auto;
 }
 
 body {
@@ -50,9 +66,11 @@ header {
         text-decoration: none;
         font-size: 18px;
         line-height: 60px;
+        margin-left: 25px;
+        margin-right: 25px;
     }
     .topnav a:hover, .topnav .split:hover {
-        color: black;
+        color: #B3653E;
       }
       
       .topnav a.split {
@@ -74,28 +92,27 @@ header {
     }
     h1 {
         position: absolute;
-        top: 30%;
+        top: 20%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: white; 
         background: rgba(0, 0, 0, 0.5); 
-        padding: 10px;
+        padding: 15px;
         z-index: 1; 
-    }
-
-    h2 {
-        text-align: center;
+        font-size: 4em;
     }
 
     p {
         position: absolute;
-        top: 40%;
+        top: 45%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: white; 
         background: rgba(0, 0, 0, 0.5); 
-        padding: 10px;
+        padding: 15px;
         z-index: 1; 
+        font-size: 20px;
+        text-align: center;
     }
 }
 
@@ -173,6 +190,13 @@ header {
     display: flex;
 }
 
+/* Bilder på om-sida */
+.about-images {
+    width: 80%;
+    display: flex;
+}
+
+/* Bild-inställningar */
 .gallery {
     flex-basis: calc(50% - 20px);
     padding: 10px 50px;
@@ -184,6 +208,8 @@ header {
         height: auto;
     }
 }
+
+
 
 /* Om-sida */
 #about {
@@ -250,6 +276,13 @@ header {
     background-color: #19203f;
 }
 
+/* Admin paragrafer */
+.admin-text {
+    width: 80%;
+    margin: 25px auto;
+    text-align: center;
+}
+
 // Knappar
 // Logga in-knapp
 #submit-login {
@@ -304,56 +337,33 @@ header {
 #menu-container button:hover {
     background-color: #615200;
 }
+// Skapa ny användare-knapp
+#userForm button {
+    background-color: #526245;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
+#userForm button:hover {
+    background-color: #22271e;
+}
+
+// Recension-knapp
 #revSave {
     @include component.button;
     background-color: #192b07;
     margin-top: 25px;
 }
 
+// Recensioner
 #review-container {
     width: 70%;
     margin: 0 auto;
 }
-
-  // Recensioner - lögg till
- #addReview {
-    padding: 20px;
-    border: 2px solid #313131;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 600px;
-  
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #222;
-    }
-  
-    label {
-      font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 5%;
-      color: #222;
-    }
-  
-    input[type="text"],
-    input[type="number"],
-    textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      color: #222;
-    }
-    input[type="radio"] {
-        margin-top: 16px;
-        width: 50px;
-    }
- }
 
  // Lögg till svart linje mellan recensionerna
  #review-container>div {

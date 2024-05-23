@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hem</title>
+    <title>Admin - Meny</title>
     <!-- Länk till scss-fil -->
     <link rel="stylesheet" href="scss/main.scss">
     <!-- Länk till fontawesome -->
@@ -18,7 +18,7 @@
 <body>
     <header>
         <div class="topnav">
-            <a class="active" href="index.html">Hem</a>
+            <a href="index.html">Hem</a>
                 <a href="about.html">Om oss</a>
                 <a href="review.html" class="split">Recensioner</a>
                 <a href="contact.html" class="split">Kontakt</a>
@@ -26,6 +26,7 @@
     </header>
     <main>
         <div id="container"></div>
+        <div id="protected-route">
             <div class="admin-start">
                 <h2 class="second-heading">Redigera meny</h2>
         
@@ -36,7 +37,8 @@
                 </ul>
                 <button type="submit" id="log-out">Logga ut</button>
             </div>
-            <h2 class="second-heading">Meny</h2>
+            <!-- Popup vid tillagd maträtt -->
+            <div id="popup-message" class="popup hidden"></div>
                   <!-- Formulär för att lägga till ny maträtt -->
                   <form id="new-meal" method="POST">
                     <h2>Lägg till maträtt</h2>
@@ -59,6 +61,7 @@
     
                     <button type="submit" id="newMeal">Lägg till maträtt</button>
                 </form>
+
             <div id="menu-container" class="admin-menu"></div>
             
              <!-- Formulär för att uppdatera befintlig maträtt -->
@@ -74,7 +77,9 @@
                 <input type="number" id="edit-price" required>
                 <button type="submit" id="editMeal">Spara ändringar</button>
             </form>
-        
+            <!-- Popup vid redigerad maträtt -->
+            <div id="popup-message-edit" class="popup hidden"></div>
+        </div>
     </main>
     
 </body>

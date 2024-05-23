@@ -29,22 +29,40 @@ const deleteBtn = document.getElementById("deleteBtn"); // Ta bort maträtt-knap
 const addUserForm = document.getElementById("userForm"); // Skapa ny användare-formulär
 const addUserBtn = document.getElementById("submit-user"); // Lägg till ny användare-knapp
 
-// export const reviewContainer = document.getElementById("review-container"); // Recension-container
+const protectedRoute = document.getElementById("protected-route"); // Skyddade routes
 
 
 /* När sidan laddas */
-window.onload = init();
+window.onload = init;
 
 function init() {
-    // Kontrollera om meny-container finns
-    if (menuContainer) {
-        getMenu();
+    // Kontrollera om besökaren står på skyddad sida eller ej
+    if (["/admin.html", "/adminmenu.html", "/createuser.html"].includes(window.location.pathname)) {
+        const token = localStorage.getItem("JWT"); // Hämta token från localStorage
+        // Kontroll om token saknas
+        if (!token) {
+           window.location.href = "index.html"; // Omdirigerar till startsidan
+        } else {
+            // Om token finns, visa skyddad innehåll
+            if (protectedRoute) {
+                protectedRoute.style.display = 'block';
+            }
+        }
     }
 
-    // Kontrollera om recension-container finns
-  //  if (reviewContainer) {
-    //    getReviews();
-   // }
+    // Dölja skyddat innehåll om token saknas
+    if (protectedRoute) {
+        const token = localStorage.getItem("JWT");
+        if (!token) {
+            protectedRoute.style.display = 'none';
+        }
+    }
+
+    // Kontrollera om meny-container finns
+    if (menuContainer) {
+        showLoadingMessage(); // Visa laddningsmeddelande
+        getMenu().then(hideLoadingMessage).catch(hideLoadingMessage); // Hämta meny och dölj laddningsmeddelande
+    }
 
     // Kontrollera om logga in-container finns
     if (loginContainer) {
@@ -53,66 +71,68 @@ function init() {
             loginUser();
         });
     }
-        // Kontroll om besökaren står på skyddad sida eller ej
-        if (["/admin.html", "/adminmenu.html"].includes(window.location.pathname)) {
-            const token = localStorage.getItem("JWT"); // Hämta token från localStorage
-            // Kontroll om token saknas
-            if (!token) {
-                alert("Du är inte inloggad eller din session har gått ut. Vänligen logga in igen."); // Alert-ruta med felmeddelande
-                window.location.href = "login.html"; // Omdirigerar till inloggningssidan
-            } else {
-            
-            };
-        }
 
-        // Kontroll om lägga till maträtt-formulär finns
-        if (addMealForm) {
-            addMealBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                addNewMeal();
-            });
+    // Kontroll om lägga till maträtt-formulär finns
+    if (addMealForm) {
+        addMealBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            addNewMeal();
+        });
 
-            const formInput = addMealForm.querySelectorAll("input");
-            formInput.forEach(input => {
-                input.addEventListener("input", () => {
-                  //  errorMsg.style.display = "none";
-                });
+        const formInput = addMealForm.querySelectorAll("input");
+        formInput.forEach(input => {
+            input.addEventListener("input", () => {
+                // errorMsg.style.display = "none";
             });
-        }
-        // Kontroll om redigera maträtt-formulär finns
-        if (updateMealForm) {
-            updateMealBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                updateMeal();
-            });
-        }
+        });
+    }
 
-        // Kontroll om ta bort maträtt-knapp finns
-        if (deleteBtn) {
-            deleteBtn.addEventListener("click", () => {
-                const id = deleteBtn.dataset._id; // Hämta maträttens ID från knappen
-                deleteMeal(id); // Skicka med maträttens ID till deleteMeal-funktionen
-            });
-        }
+    // Kontroll om redigera maträtt-formulär finns
+    if (updateMealForm) {
+        updateMealBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            updateMeal();
+        });
+    }
 
-        // Kontroll om formulär för att lägga till användare finns
-        if (addUserForm) {
-            addUserBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                createUser();
-            });
-        }
+    // Kontroll om ta bort maträtt-knapp finns
+    if (deleteBtn) {
+        deleteBtn.addEventListener("click", () => {
+            const id = deleteBtn.dataset._id; // Hämta maträttens ID från knappen
+            deleteMeal(id); // Skicka med maträttens ID till deleteMeal-funktionen
+        });
+    }
 
+    // Kontroll om formulär för att lägga till användare finns
+    if (addUserForm) {
+        addUserBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            createUser();
+        });
+    }
 
-        // Kontroll om logga ut-knapp finns
-        if (logoutBtn) {
-            // Händelselyssnare för att logga ut
-            logoutBtn.addEventListener("click", () => {
-                localStorage.clear() // Töm localStorage
-                window.location.href = "/index.html"; // Skicka användaren till startsidan igen
-            });
-        }
-        
+    // Kontroll om logga ut-knapp finns
+    if (logoutBtn) {
+        // Händelselyssnare för att logga ut
+        logoutBtn.addEventListener("click", () => {
+            localStorage.clear(); // Töm localStorage
+            window.location.href = "/index.html"; // Skicka användaren till startsidan igen
+        });
+    }
 }
 
+/* Visa laddningsmeddelande */
+export function showLoadingMessage() {
+    const loadingMessage = document.getElementById('loadingMessage');
+    if (loadingMessage) {
+        loadingMessage.style.display = 'block';
+    }
+}
 
+/* Dölj laddningsmeddelande */
+export function hideLoadingMessage() {
+    const loadingMessage = document.getElementById('loadingMessage');
+    if (loadingMessage) {
+        loadingMessage.style.display = 'none';
+    }
+}
