@@ -3,17 +3,22 @@
 /* Moduler */
 // Importa funktioner från menu.js
 import { getMenu, addNewMeal, updateMeal, deleteMeal } from "./menu"; 
+import { showPopupMessage } from "./menu"; //
 
 
 // Importera logga in, skapa användare
 import { loginUser } from "./login"; 
 import { createUser } from "./createuser";
 
+// Importera hämta recension-funktion
+import { getReviews } from "./review";
+
 
 /* Variabler */
 export const url = "https://projektbackendwebservice.onrender.com/api/"; // API, exporteras
 export const menuContainer = document.getElementById("menu-container"); // Meny-container, exporteras
 export let errorMsg = document.getElementById("error-message"); // Felmeddelande
+export const reviewContainer = document.getElementById("review-container"); // Container för recensioner
 
 const loginContainer = document.getElementById("login"); // Logga in-formulär
 const loginBtn = document.getElementById("submit-login"); // Logga in-knapp
@@ -31,6 +36,11 @@ const addUserBtn = document.getElementById("submit-user"); // Lägg till ny anv�
 
 const protectedRoute = document.getElementById("protected-route"); // Skyddade routes
 
+const messageForm = document.getElementById("messageForm"); // Kontaktformulär
+const submitMessageBtn = document.getElementById("submit-message"); // Skicka meddelande-knapp
+
+const menuButton = document.querySelector(".menu-button"); // Meny-knapp
+const dropdownMenu = document.querySelector(".dropdown-menu"); // Dropdown-meny
 
 /* När sidan laddas */
 window.onload = init;
@@ -82,7 +92,6 @@ function init() {
         const formInput = addMealForm.querySelectorAll("input");
         formInput.forEach(input => {
             input.addEventListener("input", () => {
-                // errorMsg.style.display = "none";
             });
         });
     }
@@ -117,6 +126,29 @@ function init() {
         logoutBtn.addEventListener("click", () => {
             localStorage.clear(); // Töm localStorage
             window.location.href = "/index.html"; // Skicka användaren till startsidan igen
+        });
+    }
+
+    // Kontroll om kontaktformulär finns 
+    if (messageForm) {
+        // Händelselyssnare på knapp
+        submitMessageBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            messageForm.reset(); // Återställ formulär
+            // Visa popup
+            showPopupMessage("Tack för ditt meddelande!", "popup-sent-message");
+        });
+    }
+
+    // Kontroll om recensioncontainer finns 
+    if (reviewContainer) {
+        getReviews();
+    }
+
+    // Kontroll om meny-knappen finns
+    if (menuButton) {
+        menuButton.addEventListener("click", () => {
+            dropdownMenu.classList.toggle("show");
         });
     }
 }

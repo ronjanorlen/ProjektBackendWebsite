@@ -18,16 +18,44 @@
 <body>
     <header>
         <div class="topnav">
+            <button class="menu-button">Meny</button>
+            <nav class="dropdown-menu">
             <a href="index.html">Hem</a>
                 <a href="about.html">Om oss</a>
                 <img src="images/logotypartutt.png" alt="Ett dukat bord på en restaurang">
-                <a href="review.html" class="split">Recensioner</a>
-                <a href="contact.html" class="split">Kontakt</a>
+                <a href="review.html">Recensioner</a>
+                <a href="contact.html">Kontakt</a>
+            </nav>
         </div>
     </header>
     <main>
         <div id="container"></div>
+
+        <div id="contact">
             <h2>Kontakta oss</h2>
+            <p>Vill du komma i kontakt med oss för bordsbokning eller övriga frågor?<br>
+            Du kan ringa oss via 0653 - 00 01 03, alternativt skicka ett meddelande via 
+            kontaktformuläret här nedan.
+            </p>
+         <!-- Popup vid skickat meddelande -->
+         <div id="popup-sent-message" class="popup hidden"></div>
+
+            <!-- Formulär för att skicka meddelande (ingen bakomliggande funktion) -->
+            <form id="messageForm">
+                <h2>Skicka meddelande</h2>
+    
+                <label for="email">E-post:</label>
+                <input type="text" id="email" required placeholder="Ange din epostadress">
+    
+                <label for="message">Meddelande:</label>
+                <textarea id="message" placeholder="Vad undrar du över?"></textarea>
+
+    
+                <button type="submit" id="submit-message">Skicka</button>
+    
+            </form>
+        </div>
+            
             
        
     </main>

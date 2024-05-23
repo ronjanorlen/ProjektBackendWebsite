@@ -44,7 +44,6 @@
     border-radius: 5px;
 }
 
-
 #newMeal:hover {
     background-color: #22271e;
 }
@@ -195,3 +194,25 @@
         width: 50px;
     }
  }
+
+ // Skicka meddelande-formulär
+ #messageForm {
+    width: 80%;
+    margin: 0 auto 10%;
+}
+
+
+#messageForm label {
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+#messageForm input[type="text"],
+#messageForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #000; 
+    border-radius: 5px;
+}

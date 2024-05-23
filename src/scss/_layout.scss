@@ -5,13 +5,14 @@
     box-sizing: border-box;
 }
 
-// Laddningsmeddelande om innehållet laddar långsamt 
+// Laddningsikon om innehållet laddar långsamt 
 #loadingMessage {
     display: none;
 }
+
 #loadingMessage i {
     font-size: 30px;
-    margin-left: 100px;
+    margin-left: 10px;
     margin-bottom: 10px;
     animation-name: spinner;
     animation-timing-function: ease;
@@ -53,7 +54,7 @@ header {
     left: 0;         
     z-index: 1000;   
 
-    .topnav {
+    .dropdown-menu {
         background-color: base.$main-color;
         overflow: hidden;
         height: 120px;
@@ -62,25 +63,33 @@ header {
         align-items: center; 
     }
 
-    .topnav a {
+    .dropdown-menu a {
         color: #fff;
         text-align: center;
         text-decoration: none;
-        font-size: 18px;
+        font-size: 24px;
+        padding: 5px 25px;
     }
-    .topnav a:hover, .topnav .split:hover {
+    
+    .dropdown-menu a:hover {
         color: #B3653E;
-    }
-      
-    .topnav a.split {
-        color: white;
     }
 
     img {
         max-height: 100px; 
     }
 
+    .menu-button {
+        display: none;
+        background-color: #2B3B20;
+        border: none;
+        color: #ffffff;
+        padding: 10px;
+        font-size: 15px;
+    }
 }
+
+
 /* Startsida */
 #container {
     position: relative;
@@ -118,7 +127,7 @@ header {
     }
 }
 
-/* Meny för maträtter */
+/* Maträtts-meny */
 
 #menu-container {
     width: 70%;
@@ -210,8 +219,6 @@ header {
         height: auto;
     }
 }
-
-
 
 /* Om-sida */
 #about {
@@ -341,13 +348,8 @@ header {
 }
 // Skapa ny användare-knapp
 #userForm button {
+    @include component.button;
     background-color: #526245;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
 }
 
 #userForm button:hover {
@@ -374,6 +376,16 @@ header {
     margin-bottom: 20px;
  }
 
+ // Skicka meddelande-knapp
+ #submit-message {
+    @include component.button;
+    background-color: #2b2f3f;
+ }
+
+ #submit-message:hover {
+    background-color: #19203f;
+ }
+
 
 /* Footer */
 #footer-container {
@@ -391,5 +403,173 @@ header {
         line-height: 2.4rem;
         text-align: left;
         color: base.$footer-links;
+    }
+}
+
+// Media queries
+
+@media only screen and (max-width: 600px) {
+
+    .topnav .dropdown-menu {
+        display: none; /* Dölj menyn som standard */
+        flex-direction: column;
+        height: auto;
+    }
+
+    .topnav .dropdown-menu.show {
+        display: flex; /* Visa menyn när klassen "show" är tillagd */
+    }
+
+    .topnav .menu-button {
+        display: block; /* Visa meny-knappen */
+        float: left;
+        background-color: base.$main-color;
+        color: #fff;
+        padding: 25px 35px;
+        border: none;
+        font-size: 24px;
+    }
+
+    header {
+        position: relative;
+        height: auto;
+        background-color: base.$main-color;
+    }
+
+    .topnav .dropdown-menu a {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        text-align: center;
+        background-color: base.$main-color;
+    }
+
+    header img {
+        display: none;
+    }
+
+    #container h1 {
+        position:relative;
+        font-size: 1.5em;
+        text-align: center;
+        z-index: unset;
+        top: unset;
+        transform: none;
+        left: 0;
+    }
+
+    #container p {
+        position: relative;
+        font-size: 16px;
+        z-index: unset;
+        top: unset;
+        margin-top: 20px;
+        transform: none;
+        left: 0;
+    }
+
+    #menu-container {
+        width: 100%;
+        margin: 0 auto;
+        border: none;
+        padding: 2px 25px;
+
+        p {
+            font-size: 16px;
+            width: 100%;
+        }
+    }
+
+    .home-images, .about-images {
+        width: 100%;
+        flex-direction: column;
+
+        .gallery {
+            width: 100%;
+            padding: 5px 5px;
+        }
+    }
+
+    // Om, recensioner, kontakt, skapa användare
+    #about, #review-container, #reviews, #contact, #userForm {
+        width: 100%;
+        padding: 2px 20px;
+    }
+
+    #addReview {
+        input[type="radio"] {
+            margin-top: 16px;
+            width: 10px;
+        }
+    }
+
+    #revSave, #submit-message {
+        width: 100%;
+    }
+
+    #messageForm {
+        width: 100%;
+    }
+
+    // Logga in-sida 
+    #login-container {
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 0;
+    }
+
+    // Admin-meny
+    .admin-start {
+        flex-direction: column; 
+        align-items: flex-start; 
+    }
+
+    .admin-start ul {
+        width: 100%; 
+        display: flex;
+        flex-direction: column; 
+    }
+
+    .admin-start ul li {
+        width: 100%; 
+        margin: 10px 0; 
+        text-align: center;
+    }
+
+    .admin-start h2 {
+        text-align: center; 
+        margin-bottom: 20px; 
+    }
+
+    #log-out {
+        margin-top: 25px;
+    }
+
+    .admin-text {
+        width: 100%;
+        padding: 5px 10px;
+    }
+
+    // Lägg till maträtt formulär
+    #new-meal {
+        border: none;
+        padding: 0;
+    }
+
+    // Lägg till maträtt-knapp, spara redigerad maträtt-knapp, skapa konto-knapp
+    #newMeal, #editMeal, #submit-user {
+        width: 100%;
+    }
+
+    // Footer
+    #footer-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+
+        li {
+            margin-right: 30px;
+        }
     }
 }

@@ -4,13 +4,12 @@ import { url } from "./main"; // importera API
 import { showLoadingMessage, hideLoadingMessage } from "./main"; // Laddningsmeddelanden
 import { showPopupMessage } from "./menu"; // Popup-meddelande funktion
 
-const addReviewForm = document.getElementById("addReview"); // Formulär för att lägga till recension
-const reviewContainer = document.getElementById("review-container"); // Recension-container
+import { reviewContainer } from "./main"; // Recension-container
 
-getReviews();
+const addReviewForm = document.getElementById("addReview"); // Formulär för att lägga till recension
 
 /* Exporterad funktion för att hämta recensioner */
-async function getReviews() {
+export async function getReviews() {
     try {
         // Visa laddningsmeddelenade om seg laddning
         showLoadingMessage();
@@ -28,8 +27,6 @@ async function getReviews() {
         console.log(e);
     }
 }
-
-
 
 /* Funktion för att visa recensioner */
 function displayReviews(reviews) {
@@ -70,53 +67,59 @@ function displayReviews(reviews) {
     }
 }
 
-/* Lyssnar på submit för formuläret */
-addReviewForm.addEventListener("submit", async (event) => {
-    event.preventDefault(); 
-
-    // Hämta värden från formuläret
-    const name = document.getElementById("rev-name").value;
-    const comment = document.getElementById("rev-com").value;
-    const rating = document.querySelector('input[name="rev-rate"]:checked').value;
-
-    // Kontrollera input, meddela om något saknas
-    if (!name || !comment || !rating) {
-        alert("Fyll i alla fält.");
-        return;
-    }
-
-    if (rating < 1 || rating > 5) {
-        alert("Rating måste vara mellan 1 och 5.");
-        return;
-    }
-
-    try {
-        const response = await fetch(`${url}reviews`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name: name,
-                comment: comment,
-                rating: rating
-            })
+    /* Lyssnar på submit för formuläret */
+    if (addReviewForm) {
+        addReviewForm.addEventListener("submit", async (event) => {
+            event.preventDefault(); 
+    
+            // Hämta värden från formuläret
+            const name = document.getElementById("rev-name").value;
+            const comment = document.getElementById("rev-com").value;
+            const rating = document.querySelector('input[name="rev-rate"]:checked').value;
+    
+            // Kontrollera input, meddela om något saknas
+            if (!name || !comment || !rating) {
+                alert("Fyll i alla fält.");
+                return;
+            }
+    
+            if (rating < 1 || rating > 5) {
+                alert("Rating måste vara mellan 1 och 5.");
+                return;
+            }
+    
+            try {
+                const response = await fetch(`${url}reviews`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        comment: comment,
+                        rating: rating
+                    })
+                });
+    
+                if (response.ok) {
+                    // Ladda om recensioner efter att ha lagt till en ny
+                    getReviews();
+    
+                    // Återställ formuläret
+                    addReviewForm.reset();
+    
+                    // Visa popup-meddelande
+                    showPopupMessage("Tack för din kommentar!", "popup-message-rev");
+                } else {
+                    alert("Något gick fel, testa igen senare.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Något gick fel, testa igen senare.");
+            }
         });
-
-        if (response.ok) {
-            // Ladda om recensioner efter att ha lagt till en ny
-            getReviews();
-
-            // Återställ formuläret
-            addReviewForm.reset();
-
-            // Visa popup-meddelande
-            showPopupMessage("Tack för din kommentar!", "popup-message-rev");
-        } else {
-            alert("Något gick fel, testa igen senare.");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Något gick fel, testa igen senare.");
+    } else {
+       
     }
-});
+
+
