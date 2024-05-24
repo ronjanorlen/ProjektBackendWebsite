@@ -26,6 +26,8 @@ export async function loginUser() {
         
         const data = await response.json(); // Invänta svar och konvertera till json
 
+        console.log('Login response:', data);
+
         // Kontroll om svaret är lyckat eller inte
         if (!response.ok) {
             console.error("Inloggningsfel: ", data.error); 
