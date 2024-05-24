@@ -110,7 +110,7 @@ header {
         background: rgba(0, 0, 0, 0.5); 
         padding: 15px;
         z-index: 1; 
-        font-size: 4em;
+        font-size: 3.8em;
     }
 
     p {
@@ -122,7 +122,7 @@ header {
         background: rgba(0, 0, 0, 0.5); 
         padding: 15px;
         z-index: 1; 
-        font-size: 20px;
+        font-size: 18px;
         text-align: center;
     }
 }
@@ -408,7 +408,7 @@ header {
 
 // Media queries
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
 
     .topnav .dropdown-menu {
         display: none; /* Dölj menyn som standard */
@@ -572,4 +572,93 @@ header {
             margin-right: 30px;
         }
     }
+}
+
+
+@media only screen and (max-width: 1200px) and (min-width: 800px) {
+    #container {
+        position: relative;
+        width: 100%;
+        margin-top: 8%;
+        padding: 10px 10px;
+    
+        img {
+            width: 100%;
+            height: auto;
+        }
+        h1 {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white; 
+            background: rgba(0, 0, 0, 0.5); 
+            padding: 15px;
+            z-index: 1; 
+            font-size: 2em;
+        }
+    
+        p {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white; 
+            background: rgba(0, 0, 0, 0.5); 
+            padding: 15px;
+            z-index: 1; 
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+
+    .home-images, .about-images {
+        width: 100%;
+        flex-direction: column;
+
+        .gallery {
+            width: 100%;
+            padding: 5px 5px;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 801px) and (min-width: 700px) {
+    #container {
+        position: relative;
+        width: 100%;
+        margin-top: 8%;
+        padding: 10px 10px;
+    
+        img {
+            width: 100%;
+            height: auto;
+        }
+        h1 {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white; 
+            background: rgba(0, 0, 0, 0.5); 
+            padding: 15px;
+            z-index: 1; 
+            font-size: 1.8em;
+        }
+    
+        p {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white; 
+            background: rgba(0, 0, 0, 0.5); 
+            padding: 15px;
+            z-index: 1; 
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+
 }
