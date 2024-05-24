@@ -51,20 +51,8 @@ function init() {
         const token = localStorage.getItem("JWT"); // Hämta token från localStorage
         // Kontroll om token saknas
         if (!token) {
-          window.location.href = "index.html"; // Omdirigerar till startsidan
-        } else {
-            // Om token finns, visa skyddad innehåll
-            if (protectedRoute) {
-                protectedRoute.style.display = 'block';
-            }
-        }
-    }
-
-    // Dölja skyddat innehåll om token saknas
-    if (protectedRoute) {
-        const token = localStorage.getItem("JWT");
-        if (!token) {
-            protectedRoute.style.display = 'none';
+            window.location.href = "login.html"; // Omdirigera till login.html om token saknas
+            return; // Avsluta funktionen
         }
     }
 
