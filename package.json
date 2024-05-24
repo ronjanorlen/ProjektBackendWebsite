@@ -6,7 +6,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html"
+    "build": "parcel build src/*.html, adminmenu.html, createuser.html"
   },
   "keywords": [],
   "author": "Ronja Norlén",
