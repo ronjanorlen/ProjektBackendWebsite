@@ -22,7 +22,7 @@
             <nav class="dropdown-menu">
             <a href="index.html">Hem</a>
                 <a href="about.html">Om oss</a>
-                <img src="images/logotypartutt.png" alt="Ett dukat bord på en restaurang">
+                <img src="images/logotypartutt.png" alt="Artutts logotyp">
                 <a href="review.html">Recensioner</a>
                 <a href="contact.html">Kontakt</a>
             </nav>
@@ -42,17 +42,22 @@
                 <button type="submit" id="log-out">Logga ut <i class="fa-solid fa-arrow-right"></i></button>
             </div>
             <!-- Popup vid tillagd maträtt -->
-            <div id="popup-message" class="popup hidden"></div>
+            <div id="popup-message-add" class="popup hidden"></div>
+               <!-- Popup vid fel av tillagd maträtt -->
+               <div id="popup-message-error" class="popup hidden error"></div>
+              
+
                   <!-- Formulär för att lägga till ny maträtt -->
                   <form id="new-meal" method="POST">
                     <h2>Lägg till maträtt</h2>
-                    <label for="new-name">Namn:</label>
-                    <input type="text" id="new-name" required>
+                    <p>Fyll i alla fält</p>
+                    <label for="new-name">*Namn:</label>
+                    <input type="text" id="new-name" placeholder="Ange maträttens namn" required>
     
-                    <label for="new-desc">Beskrivning:</label>
-                    <textarea id="meal-desc" placeholder="Ange en beskrivning"></textarea>
+                    <label for="new-desc">*Beskrivning:</label>
+                    <textarea id="new-desc" placeholder="Ange en beskrivning" required></textarea>
     
-                    <label for="meal-category">Kategori:</label>
+                    <label for="meal-category">*Kategori:</label>
                     <select id="meal-category" required>
                     <option value="">Välj kategori</option>
                     <option value="mainmenu">Ordinarie meny</option>
@@ -60,13 +65,13 @@
                     <option value="dessert">Efterrätt</option>
                 </select>
     
-                    <label for="new-price">Pris:</label>
-                    <input type="number" id="new-price" required>
+                    <label for="new-price">*Pris:</label>
+                    <input type="number" id="new-price" placeholder="Ange pris" required>
     
                     <button type="submit" id="newMeal">Lägg till maträtt <i class="fa-solid fa-check"></i></button>
                 </form>
-                
-                <div id="loadingMessage"><i class="fa-solid fa-rotate-right"></i></div>
+                <!-- Laddningsmeddelande -->
+                <div id="loadingMessage">Laddar meny...</div>
             <div id="menu-container" class="admin-menu"></div>
             
              <!-- Formulär för att uppdatera befintlig maträtt -->

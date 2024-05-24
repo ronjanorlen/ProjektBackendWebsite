@@ -1,6 +1,6 @@
 @use "base";
 
-// Rubriker
+// Rubriker på adminsida
 .second-heading {
     font-size: base.$second-headings;
 }
@@ -26,6 +26,16 @@
     transition: opacity 0.3s ease-in-out;
 }
 
+/* Felmeddelande popup */
+.popup.error {
+    background-color: #d9534f; 
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
 .popup.show {
     opacity: 1;
 }
@@ -34,7 +44,7 @@
     opacity: 0;
 }
 
-//Knappar
+//Mixin för knappar
 @mixin button {
     color: #fff;
     border: none;
@@ -44,11 +54,8 @@
     border-radius: 5px;
 }
 
-#newMeal:hover {
-    background-color: #22271e;
-}
+/* Formulär */
 
-// Formulär
 // Logga in-formulär
 #login-container {
     border: 2px solid #000;
@@ -73,7 +80,7 @@
     border-radius: 5px;
 }
 
-/*  lägg till maträtt */
+// lägg till maträtt 
 #new-meal {
     padding: 20px;
     border: 2px solid #313131;
@@ -138,7 +145,6 @@
     width: 60%;
     margin: 0 auto 10%;
 }
-
 
 #userForm label {
     font-size: 16px;

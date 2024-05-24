@@ -167,10 +167,16 @@ export async function updateMeal() {
 /* Exportad async-funktion för att lägga till maträtt */
 export async function addNewMeal() {
     const name = document.getElementById("new-name").value;
-    const description = document.getElementById("meal-desc").value;
+    const description = document.getElementById("new-desc").value;
     const category = document.getElementById("meal-category").value;
     const price = document.getElementById("new-price").value;
     const addMealForm = document.getElementById("new-meal");
+
+    // Kontroll att alla fält är ifyllda
+    if (!name || !description || !category || !price) {
+        showPopupMessage("Fyll i alla fält", "popup-message-error");
+        return; // Avbryt om det någotär tomt
+    }
 
     // Objekt med formulärets inputvärden
     const newMealData = {
@@ -202,7 +208,7 @@ export async function addNewMeal() {
             getMenu(); // Hämta menyn
 
             // Visa popup-meddelande
-            showPopupMessage("Maträtten har lagts till!", "popup-message");
+            showPopupMessage("Maträtten har lagts till!", "popup-message-add");
 
         }
     } catch (error) {

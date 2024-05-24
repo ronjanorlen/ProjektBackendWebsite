@@ -8,6 +8,7 @@
 // Laddningsikon om innehållet laddar långsamt 
 #loadingMessage {
     display: none;
+    font-size: 42px;
 }
 
 #loadingMessage i {
@@ -18,7 +19,7 @@
     animation-timing-function: ease;
     animation-duration: 3s;
     animation-iteration-count: infinite;
-   }
+}
 
 // Dölj skyddade routes om inte inloggad
 #protected-route {
@@ -46,43 +47,162 @@ main {
     margin: 0 auto;
 }
 
+/* Text-regler för flera containrar/delar */
+#container p,
+#menu-container p,
+#open-hours li,
+.topnav .dropdown-menu a {
+    font-size: base.$text-size;
+}
+
+/*Text-placering flera element */
+.dropdown-menu a,
+.topnav .dropdown-menu a,
+#container p,
+#menu-container h2,
+#menu-container ul,
+#open-hours ul,
+#login-container,
+.amin-start h2,
+.admin-text {
+    text-align: center;
+}
+
+/* Knappar */
+// Logga in-knapp
+#submit-login {
+    @include component.button;
+    background-color: #7a6426;
+    border: 1px solid #000;
+
+}
+
+#submit-login:hover {
+    background-color: #664c05;
+}
+
+// Logga ut-knapp
+#log-out {
+    @include component.button;
+    background-color: #683333;
+}
+
+#log-out:hover {
+    background-color: #811010;
+}
+
+// Lägg till maträtt-knapp
+#newMeal {
+    @include component.button;
+    background-color: #2c3f19;
+    align-self: flex-end;
+}
+
+#newMeal:hover {
+    background-color: #192b07;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+// Spara redigerad maträtt-knapp
+#editMeal {
+    @include component.button;
+    background-color: #22273a;
+}
+
+#editMeal:hover {
+    background-color: #19203f;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+// Redigera och ta bort-knappar i meny container
+#menu-container button {
+    @include component.button;
+    background-color: #5f5627;
+    margin: 25px 25px;
+}
+
+#menu-container button:hover {
+    background-color: #615200;
+}
+
+// Skapa ny användare-knapp
+#userForm button {
+    @include component.button;
+    background-color: #526245;
+}
+
+#userForm button:hover {
+    background-color: #22271e;
+}
+
+// Recension-knapp
+#revSave {
+    @include component.button;
+    background-color: #192b07;
+    margin-top: 25px;
+}
+
+// Recensioner
+#review-container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+// Lögg till svart linje mellan recensionerna
+#review-container>div {
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+// Skicka meddelande-knapp
+#submit-message {
+    @include component.button;
+    background-color: #2b2f3f;
+}
+
+#submit-message:hover {
+    background-color: #19203f;
+}
+
+
 /* Huvudmeny */
 header {
-    position: fixed; 
-    width: 100%;     
-    top: 0;          
-    left: 0;         
-    z-index: 1000;   
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 
+    // Dropdown
     .dropdown-menu {
         background-color: base.$main-color;
         overflow: hidden;
         height: 120px;
-        display: flex; 
-        justify-content: space-evenly; 
-        align-items: center; 
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
     }
 
     .dropdown-menu a {
         color: #fff;
-        text-align: center;
         text-decoration: none;
         font-size: 24px;
         padding: 5px 25px;
     }
-    
+
     .dropdown-menu a:hover {
         color: #B3653E;
     }
 
+    // Logotyp
     img {
-        max-height: 100px; 
+        max-height: 100px;
     }
 
     .menu-button {
         display: none;
         background-color: #2B3B20;
-        border: none;
         color: #ffffff;
         padding: 10px;
         font-size: 15px;
@@ -101,16 +221,17 @@ header {
         width: 100%;
         height: auto;
     }
+
     h1 {
         position: absolute;
         top: 20%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: white; 
-        background: rgba(0, 0, 0, 0.5); 
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
         border-radius: 8px;
         padding: 15px;
-        z-index: 1; 
+        z-index: 1;
         font-size: 3.8em;
     }
 
@@ -119,13 +240,11 @@ header {
         top: 45%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: white; 
-        background: rgba(0, 0, 0, 0.5); 
+        color: white;
+        background: rgba(0, 0, 0, 0.5);
         border-radius: 8px;
         padding: 15px;
-        z-index: 1; 
-        font-size: 18px;
-        text-align: center;
+        z-index: 1;
     }
 }
 
@@ -136,14 +255,13 @@ header {
     border: 1px solid #000;
 
     .meal-name {
-        font-family:'Times New Roman', Times, serif;
+        font-family: 'Times New Roman', Times, serif;
         font-size: 24px;
         color: rgb(3, 95, 45);
     }
 
     p {
         font-family: 'Courier New', Courier, monospace;
-        font-size: 18px;
         width: 60%;
         margin: 15px auto;
     }
@@ -151,7 +269,6 @@ header {
 
 
 #menu-container h2 {
-    text-align: center; 
     color: rgb(0, 95, 43);
     margin-bottom: 25px;
     font-size: 45px;
@@ -159,12 +276,11 @@ header {
 
 #menu-container ul {
     padding: 0;
-    text-align: center; 
 }
 
 #menu-container ul li {
-    display: block; 
-    margin: 30px 10px; 
+    display: block;
+    margin: 30px 10px;
 }
 
 /* öppet-tider */
@@ -179,19 +295,17 @@ header {
 }
 
 #open-hours h2 {
-    margin: 10px 0; 
+    margin: 10px 0;
 }
 
 #open-hours ul {
     list-style-type: none;
-    padding: 0; 
-    margin: 0;  
-    text-align: center; 
+    padding: 0;
+    margin: 0;
 }
 
 #open-hours li {
     margin: 5px 0;
-    font-size: 18px;
 }
 
 /* Bilder på startsida */
@@ -229,7 +343,6 @@ header {
 #login-container {
     width: 450px;
     margin: 10px auto;
-    text-align: center;
     background-color: #2c3f19;
     padding: 20px;
     border-radius: 10px;
@@ -245,34 +358,34 @@ header {
 .admin-start {
     width: 80%;
     margin: 10px auto;
-    display: flex;            
-    align-items: center;      
-    justify-content: space-between; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     h2 {
-        flex: 1;              
-        text-align: center;   
+        flex: 1;
     }
 
     button {
-        flex: 0 1 auto;       
-        margin: 0 10px;      
-        border: 1px solid #000; 
+        flex: 0 1 auto;
+        margin: 0 10px;
+        border: 1px solid #000;
     }
 
     ul {
         list-style-type: none;
-        display: flex;        
+        display: flex;
         margin: 0;
         padding: 0;
 
         li {
-            margin: 0 10px;  
+            margin: 0 10px;
             padding: 10px 25px;
             background-color: #455f81;
             border-radius: 8px;
             border: 1px solid #000;
         }
+
         a {
             color: #ffffff;
             text-decoration: none;
@@ -288,102 +401,7 @@ header {
 .admin-text {
     width: 80%;
     margin: 25px auto;
-    text-align: center;
 }
-
-// Knappar
-// Logga in-knapp
-#submit-login {
-    @include component.button;
-    background-color: #7a6426;
-    border: 1px solid #000;
- 
-}
- #submit-login:hover {
-     background-color: #664c05;
- }
-
-// Logga ut-knapp
-#log-out {
-    @include component.button;
-    background-color: #683333;
-}
-    #log-out:hover {
-        background-color: #811010;
-}
-
-// Lägg till maträtt-knapp
-#newMeal {
-    @include component.button;
-    background-color: #2c3f19;
-    align-self: flex-end;
-  }
-
-  #newMeal:hover {
-    background-color: #192b07;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  // Spara redigerad maträtt-knapp
-  #editMeal {
-    @include component.button;
-    background-color: #22273a;
-  }
-
-  #editMeal:hover {
-    background-color: #19203f;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-// Redigera och ta bort-knappar i meny container
-  #menu-container button {
-    @include component.button;
-    background-color: #5f5627;
-    margin: 25px 25px;
-}
-
-#menu-container button:hover {
-    background-color: #615200;
-}
-// Skapa ny användare-knapp
-#userForm button {
-    @include component.button;
-    background-color: #526245;
-}
-
-#userForm button:hover {
-    background-color: #22271e;
-}
-
-// Recension-knapp
-#revSave {
-    @include component.button;
-    background-color: #192b07;
-    margin-top: 25px;
-}
-
-// Recensioner
-#review-container {
-    width: 70%;
-    margin: 0 auto;
-}
-
- // Lögg till svart linje mellan recensionerna
- #review-container>div {
-    border-bottom: 1px solid #000;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
- }
-
- // Skicka meddelande-knapp
- #submit-message {
-    @include component.button;
-    background-color: #2b2f3f;
- }
-
- #submit-message:hover {
-    background-color: #19203f;
- }
 
 
 /* Footer */
@@ -391,12 +409,13 @@ header {
     display: flex;
     justify-content: space-evenly;
     flex-shrink: 0;
-    background-color:#1F1F1F;
+    background-color: #1F1F1F;
     font-size: 16px;
     width: 100%;
     height: 200px;
 
-    .footer-row li a, .footer-row li {
+    .footer-row li a,
+    .footer-row li {
         list-style: none;
         padding: 0;
         line-height: 2.4rem;
@@ -410,17 +429,17 @@ header {
 @media only screen and (max-width: 700px) {
 
     .topnav .dropdown-menu {
-        display: none; /* Dölj menyn som standard */
+        display: none; // Dölj menyn som standard
         flex-direction: column;
         height: auto;
     }
 
     .topnav .dropdown-menu.show {
-        display: flex; /* Visa menyn när klassen "show" är tillagd */
+        display: flex; // Visa menyn när klassen "show" är tillagd
     }
 
     .topnav .menu-button {
-        display: block; /* Visa meny-knappen */
+        display: block; // Visa meny-knappen
         float: left;
         background-color: base.$main-color;
         color: #fff;
@@ -438,8 +457,6 @@ header {
     .topnav .dropdown-menu a {
         width: 100%;
         padding: 10px;
-        font-size: 18px;
-        text-align: center;
         background-color: base.$main-color;
     }
 
@@ -447,8 +464,9 @@ header {
         display: none;
     }
 
+
     #container h1 {
-        position:relative;
+        position: relative;
         font-size: 1.5em;
         text-align: center;
         z-index: unset;
@@ -481,7 +499,8 @@ header {
         }
     }
 
-    .home-images, .about-images {
+    .home-images,
+    .about-images {
         width: 100%;
         flex-direction: column;
 
@@ -492,33 +511,40 @@ header {
     }
 
     // Om, recensioner, kontakt, skapa användare
-    #about, #review-container, #reviews, #contact, #userForm {
+    #about,
+    #review-container,
+    #reviews,
+    #contact,
+    #userForm {
         width: 100%;
         padding: 20px 20px;
     }
 
+    // Lägg till recension
     #addReview {
         input[type="radio"] {
             margin-top: 16px;
             width: 10px;
         }
     }
-   // Rating-buttons
+
+    // Rating-buttons
     #addReview input[type="radio"] {
-        transform: scale(1.5); 
+        transform: scale(1.5);
         margin: 16px auto;
-        width: 10%; 
+        width: 10%;
     }
 
     #rating-input label[for="rev-rate-5"] {
-        margin-right: 10px; 
+        margin-right: 10px;
     }
 
     #rating-input .fa-face-grin-beam {
-        margin-left: 10px; 
+        margin-left: 10px;
     }
 
-    #revSave, #submit-message {
+    #revSave,
+    #submit-message {
         width: 100%;
     }
 
@@ -535,25 +561,25 @@ header {
 
     // Admin-meny
     .admin-start {
-        flex-direction: column; 
-        align-items: flex-start; 
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .admin-start ul {
-        width: 100%; 
+        width: 100%;
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
     }
 
     .admin-start ul li {
-        width: 100%; 
-        margin: 10px 0; 
+        width: 100%;
+        margin: 10px 0;
         text-align: center;
     }
 
     .admin-start h2 {
-        text-align: center; 
-        margin-bottom: 20px; 
+        text-align: center;
+        margin-bottom: 20px;
     }
 
     #log-out {
@@ -572,10 +598,12 @@ header {
     }
 
     // Lägg till maträtt-knapp, spara redigerad maträtt-knapp, skapa konto-knapp
-    #newMeal, #editMeal, #submit-user {
+    #newMeal,
+    #editMeal,
+    #submit-user {
         width: 100%;
     }
-   
+
     // Footer
     #footer-container {
         flex-direction: column;
@@ -593,12 +621,13 @@ header {
 @media only screen and (min-width: 701px) and (max-width: 1199) {
 
 
-    #about, #contact {
+    #about,
+    #contact {
         width: 100%;
         padding: 10% 5%;
     }
 
-    #reviews  {
+    #reviews {
         width: 80%;
         padding: 5% 5%;
     }
@@ -612,18 +641,19 @@ header {
     }
 
     .admin-start {
-        flex-direction: column; 
-        align-items: flex-start; 
+        flex-direction: column;
+        align-items: flex-start;
     }
+
     .admin-start ul {
-        width: 100%; 
+        width: 100%;
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
     }
 
     .admin-start ul li {
-        width: 100%; 
-        margin: 10px 0; 
+        width: 100%;
+        margin: 10px 0;
         text-align: center;
     }
 
@@ -632,39 +662,40 @@ header {
     }
 }
 
-
+// Specifik mediaquerie för container
 @media only screen and (max-width: 1200px) and (min-width: 800px) {
     #container {
         position: relative;
         width: 100%;
         margin-top: 8%;
         padding: 10px 10px;
-    
+
         img {
             width: 100%;
             height: auto;
         }
+
         h1 {
             position: absolute;
             top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white; 
-            background: rgba(0, 0, 0, 0.5); 
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
             padding: 15px;
-            z-index: 1; 
+            z-index: 1;
             font-size: 2em;
         }
-    
+
         p {
             position: absolute;
             top: 65%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white; 
-            background: rgba(0, 0, 0, 0.5); 
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
             padding: 15px;
-            z-index: 1; 
+            z-index: 1;
             font-size: 16px;
             text-align: center;
         }
@@ -672,38 +703,40 @@ header {
 
 }
 
+// Specifik mediaquerie för container
 @media only screen and (max-width: 801px) and (min-width: 700px) {
     #container {
         position: relative;
         width: 100%;
         margin-top: 8%;
         padding: 10px 10px;
-    
+
         img {
             width: 100%;
             height: auto;
         }
+
         h1 {
             position: absolute;
             top: 30%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white; 
-            background: rgba(0, 0, 0, 0.5); 
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
             padding: 15px;
-            z-index: 1; 
+            z-index: 1;
             font-size: 1.8em;
         }
-    
+
         p {
             position: absolute;
             top: 65%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: white; 
-            background: rgba(0, 0, 0, 0.5); 
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
             padding: 15px;
-            z-index: 1; 
+            z-index: 1;
             font-size: 16px;
             text-align: center;
         }
