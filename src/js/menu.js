@@ -68,7 +68,7 @@ function displayMenu(menu) {
                 const adminMenu = menuContainer.classList.contains("admin-menu");
                 if (adminMenu) {
                     const updateBtn = document.createElement("button");
-                    updateBtn.textContent = "Redigera";
+                    updateBtn.innerHTML = 'Redigera <i class="fa-solid fa-pen"></i>';
                     updateBtn.dataset.mealId = meal._id; // Sätt maträttens ID som ett dataset på knappen
                     updateBtn.addEventListener("click", () => {
                         // Anropa funktion för att visa redigeringsformuläret
@@ -80,7 +80,7 @@ function displayMenu(menu) {
                     updateMealForm.style.display = "none";
 
                     const deleteBtn = document.createElement("button");
-                    deleteBtn.textContent = "Ta bort";
+                    deleteBtn.innerHTML = 'Ta bort <i class="fas fa-trash-alt"></i>';
                     deleteBtn.dataset.mealId = meal._id; // Sätt maträttens ID som ett dataset på knappen
                     deleteBtn.addEventListener("click", () => {
                         // Anropa funktion för att ta bort maträtten

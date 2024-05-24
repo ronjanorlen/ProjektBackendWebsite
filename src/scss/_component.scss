@@ -192,6 +192,10 @@
     input[type="radio"] {
         margin-top: 16px;
         width: 50px;
+        transform: scale(1.5);
+    }
+    #rating-input label[for="rev-rate-5"] {
+        margin-right: 10px;
     }
  }
 

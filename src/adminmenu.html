@@ -35,11 +35,11 @@
                 <h2 class="second-heading">Redigera meny</h2>
         
                 <ul>
-                    <li><a href="admin.html">Admin start</a></li>
-                    <li><a href="adminmenu.html">Meny</a></li>
-                    <li><a href="createuser.html">Skapa användare</a></li>
+                    <li><a href="admin.html"><i class="fa-solid fa-user"></i> Admin start</a></li>
+                    <li><a href="adminmenu.html"><i class="fa-solid fa-bowl-rice"></i> Meny</a></li>
+                    <li><a href="createuser.html"><i class="fa-solid fa-user-plus"></i> Skapa användare</a></li>
                 </ul>
-                <button type="submit" id="log-out">Logga ut</button>
+                <button type="submit" id="log-out">Logga ut <i class="fa-solid fa-arrow-right"></i></button>
             </div>
             <!-- Popup vid tillagd maträtt -->
             <div id="popup-message" class="popup hidden"></div>
@@ -63,7 +63,7 @@
                     <label for="new-price">Pris:</label>
                     <input type="number" id="new-price" required>
     
-                    <button type="submit" id="newMeal">Lägg till maträtt</button>
+                    <button type="submit" id="newMeal">Lägg till maträtt <i class="fa-solid fa-check"></i></button>
                 </form>
                 
                 <div id="loadingMessage"><i class="fa-solid fa-rotate-right"></i></div>
@@ -80,7 +80,7 @@
                 
                 <label for="edit-price">Pris:</label>
                 <input type="number" id="edit-price" required>
-                <button type="submit" id="editMeal">Spara ändringar</button>
+                <button type="submit" id="editMeal">Spara ändringar <i class="fa-solid fa-check"></i></button>
             </form>
             <!-- Popup vid redigerad maträtt -->
             <div id="popup-message-edit" class="popup hidden"></div>
