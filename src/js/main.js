@@ -47,7 +47,7 @@ window.onload = init;
 
 function init() {
     // Kontrollera om besökaren står på skyddad sida eller ej
-    if (["/admin.html", "/adminmenu.html", "/createuser.html"].includes(window.location.pathname)) {
+    if (["/admin", "/adminmenu", "/createuser"].includes(window.location.pathname)) {
         const token = localStorage.getItem("JWT"); // Hämta token från localStorage
         // Kontroll om token saknas
         if (!token) {
