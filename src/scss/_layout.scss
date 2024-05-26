@@ -173,6 +173,10 @@ header {
     top: 0;
     left: 0;
     z-index: 1000;
+    display: inline-block;
+    justify-content: space-between;
+    align-items: center;
+    background-color: base.$main-color;
 
     // Dropdown
     .dropdown-menu {
@@ -337,6 +341,15 @@ header {
 #about {
     width: 60%;
     margin: 0 auto;
+
+    h2, p {
+        padding: 2% 10%;
+    }
+
+    .about-images {
+        width: 80%;
+        margin: 0 auto;
+    }
 }
 
 /* Logga in-sida */
@@ -588,7 +601,7 @@ header {
 
     .admin-text {
         width: 100%;
-        padding: 5px 10px;
+        padding: 5px 20px;
     }
 
     // Lägg till maträtt formulär
