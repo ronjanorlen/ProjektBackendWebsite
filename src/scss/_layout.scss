@@ -21,13 +21,6 @@
     animation-iteration-count: infinite;
 }
 
-// Dölj skyddade routes om inte inloggad
-#protected-route {
-    display: none;
-    width: 80%;
-    margin: 0 auto;
-}
-
 body {
     display: flex;
     flex-direction: column;

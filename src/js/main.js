@@ -34,8 +34,6 @@ const deleteBtn = document.getElementById("deleteBtn"); // Ta bort maträtt-knap
 const addUserForm = document.getElementById("userForm"); // Skapa ny användare-formulär
 const addUserBtn = document.getElementById("submit-user"); // Lägg till ny användare-knapp
 
-const protectedRoute = document.getElementById("protected-route"); // Skyddade routes
-
 const messageForm = document.getElementById("messageForm"); // Kontaktformulär
 const submitMessageBtn = document.getElementById("submit-message"); // Skicka meddelande-knapp
 
